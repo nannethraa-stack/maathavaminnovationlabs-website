@@ -14,44 +14,6 @@
 	document.addEventListener( 'scroll', updateProgress, { passive: true } );
 	updateProgress();
 
-	// Animated stat counters — trigger once, on first view
-	var statEls = document.querySelectorAll( '.stat-num[data-target]' );
-	var counted = new WeakSet();
-
-	function animateCount( el ) {
-		var target = parseInt( el.getAttribute( 'data-target' ), 10 );
-		var duration = 900;
-		var start = performance.now();
-		function tick( now ) {
-			var p = Math.min( ( now - start ) / duration, 1 );
-			var eased = 1 - Math.pow( 1 - p, 3 );
-			el.textContent = Math.round( eased * target );
-			if ( p < 1 ) {
-				requestAnimationFrame( tick );
-			}
-		}
-		requestAnimationFrame( tick );
-	}
-
-	if ( 'IntersectionObserver' in window ) {
-		var observer = new IntersectionObserver(
-			function ( entries ) {
-				entries.forEach( function ( entry ) {
-					if ( entry.isIntersecting && ! counted.has( entry.target ) ) {
-						counted.add( entry.target );
-						animateCount( entry.target );
-					}
-				} );
-			},
-			{ threshold: 0.6 }
-		);
-		statEls.forEach( function ( el ) {
-			observer.observe( el );
-		} );
-	} else {
-		statEls.forEach( animateCount );
-	}
-
 	// Contact form
 	//
 	// Zero-backend by default: if the form's "action" still points at the
