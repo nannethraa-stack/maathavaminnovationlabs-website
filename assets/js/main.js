@@ -15,7 +15,7 @@
 	updateProgress();
 
 	// Animated stat counters — trigger once, on first view
-	var statEls = document.querySelectorAll( '.stat-num' );
+	var statEls = document.querySelectorAll( '.stat-num[data-target]' );
 	var counted = new WeakSet();
 
 	function animateCount( el ) {
