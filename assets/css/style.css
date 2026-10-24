@@ -3116,44 +3116,106 @@ textarea:focus-visible {
 
 /* ============================================================
    PUBLIC MILESTONES & COLLABORATIONS
-   Reuses the site's existing navy / gold design system.
+   Existing Maathavam navy-and-gold palette; refined editorial treatment.
    ============================================================ */
 
 .milestones-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background:
-        radial-gradient(
-            circle at 12% 18%,
-            rgba(199, 164, 90, 0.055),
-            transparent 28rem
-        ),
+        radial-gradient(ellipse at 86% 8%, rgba(199, 164, 90, 0.075), transparent 30rem),
+        radial-gradient(ellipse at 8% 62%, rgba(34, 66, 99, 0.16), transparent 34rem),
         var(--navy-950);
+}
+
+.milestones-section::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.milestones-section .section-heading {
+    position: relative;
+    padding-bottom: 30px;
+    margin-bottom: 38px;
+}
+
+.milestones-section .section-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 76px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
 }
 
 .milestones-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    gap: 20px;
+    align-items: stretch;
 }
 
 .milestone-card {
+    position: relative;
     min-width: 0;
-    min-height: 300px;
+    min-height: 315px;
+    overflow: hidden;
     padding: 30px;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-light);
     border-radius: var(--radius-medium);
-    background: linear-gradient(145deg, rgba(13, 27, 45, 0.96), rgba(7, 17, 31, 0.96));
-    transition:
-        border-color var(--transition),
-        transform var(--transition),
-        background var(--transition);
+    background: linear-gradient(150deg, rgba(16, 34, 55, 0.94), rgba(7, 17, 31, 0.98) 76%);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.milestone-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 30px;
+    right: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), rgba(199, 164, 90, 0.08));
+    opacity: 0.78;
+    transition: opacity var(--transition), left var(--transition), right var(--transition);
+}
+
+.milestone-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -110px;
+    bottom: -115px;
+    border: 1px solid rgba(199, 164, 90, 0.11);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(199, 164, 90, 0.025), 0 0 0 38px rgba(199, 164, 90, 0.018);
+    pointer-events: none;
 }
 
 .milestone-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
     border-color: var(--border);
-    background: var(--navy-850);
+    background: linear-gradient(150deg, rgba(19, 39, 62, 0.98), rgba(7, 17, 31, 0.99) 76%);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.22);
+}
+
+.milestone-card:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
 }
 
 .milestone-card-top {
@@ -3162,16 +3224,29 @@ textarea:focus-visible {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .milestone-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     color: var(--gold-light);
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.14em;
-    line-height: 1.5;
+    line-height: 1.6;
     text-transform: uppercase;
+}
+
+.milestone-category::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    flex: 0 0 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(199, 164, 90, 0.28);
 }
 
 .milestone-date {
@@ -3181,56 +3256,68 @@ textarea:focus-visible {
 }
 
 .milestone-card h3 {
-    margin: 0 0 14px;
+    position: relative;
+    z-index: 1;
+    margin: 0 0 16px;
     color: var(--white);
     font-family: var(--serif);
-    font-size: clamp(22px, 2vw, 29px);
+    font-size: clamp(23px, 2vw, 30px);
     font-weight: 400;
-    line-height: 1.2;
+    letter-spacing: -0.025em;
+    line-height: 1.22;
+    text-wrap: pretty;
 }
 
 .milestone-partner {
-    margin: 0 0 12px;
+    margin: 0 0 13px;
     color: var(--gold-light);
     font-size: 12px;
     font-weight: 600;
+    line-height: 1.6;
 }
 
 .milestone-summary {
+    position: relative;
+    z-index: 1;
     margin: 0;
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 .milestone-link {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     width: fit-content;
     margin-top: auto;
-    padding-top: 26px;
+    padding-top: 28px;
     color: var(--gold-light);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
+    transition: gap var(--transition), color var(--transition);
 }
 
 .milestone-link:hover {
+    gap: 14px;
     color: var(--white);
 }
 
 .milestones-empty {
+    position: relative;
     margin: 0;
-    padding: 28px 30px;
+    padding: 26px 30px 26px 34px;
     border: 1px solid var(--border-light);
     border-left: 2px solid var(--gold);
     border-radius: var(--radius-small);
-    background: rgba(13, 27, 45, 0.55);
+    background: linear-gradient(100deg, rgba(13, 27, 45, 0.78), rgba(13, 27, 45, 0.32));
     color: var(--muted);
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 .milestones-empty[hidden] {
@@ -3244,16 +3331,52 @@ textarea:focus-visible {
 }
 
 @media (max-width: 650px) {
+    .milestones-section .section-heading {
+        padding-bottom: 24px;
+        margin-bottom: 28px;
+    }
+
     .milestones-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .milestone-card {
         min-height: 0;
-        padding: 24px;
+        padding: 25px;
+    }
+
+    .milestone-card::before {
+        left: 25px;
+        right: 25px;
+    }
+
+    .milestone-card:hover::before {
+        left: 0;
+        right: 0;
     }
 
     .milestone-card-top {
-        margin-bottom: 22px;
+        margin-bottom: 23px;
+    }
+
+    .milestone-card h3 {
+        font-size: 25px;
+    }
+
+    .milestones-empty {
+        padding: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .milestone-card,
+    .milestone-card::before,
+    .milestone-link {
+        transition: none;
+    }
+
+    .milestone-card:hover {
+        transform: none;
     }
 }
