@@ -308,6 +308,16 @@
 
 
     /* --------------------------------------------------------
+       ENGAGEMENT CARD -> CONTACT FORM
+       -------------------------------------------------------- */
+    document.querySelectorAll("[data-opportunity]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            const select = document.getElementById("opportunitySelect");
+            if (select) select.value = card.getAttribute("data-opportunity") || "";
+        });
+    });
+
+    /* --------------------------------------------------------
        SMOOTH ANCHOR HANDLING
        -------------------------------------------------------- */
 
