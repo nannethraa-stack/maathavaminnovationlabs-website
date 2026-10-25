@@ -23,3 +23,12 @@
 .privacy-shell h2{margin:40px 0 12px;color:var(--ink);font-size:23px;letter-spacing:-.03em}
 .privacy-shell p,.privacy-shell li{color:#52616b;line-height:1.85}
 .privacy-shell a{color:#62744d;text-decoration:underline;text-underline-offset:4px}
+
+/* Partnership-first positioning: four audiences, not a problem intake page */
+.engage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.engage-card{min-height:245px;border-bottom:1px solid var(--line)}
+.engage-card:nth-child(odd){border-left:1px solid var(--line)}
+.engage-card:nth-child(even){border-right:1px solid var(--line)}
+.engage-card h3{max-width:390px}
+.engage-card p{max-width:430px}
+@media(max-width:760px){.engage-grid{grid-template-columns:1fr}.engage-card,.engage-card:first-child,.engage-card:nth-child(odd),.engage-card:nth-child(even){border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}}
