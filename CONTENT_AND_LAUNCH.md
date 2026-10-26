@@ -14,7 +14,10 @@ Before adding a case study, announcement, partner reference, patent statement, t
 - Do not add empty announcement panels or placeholder cards to the public site. Add a section only when it has useful, approved content.
 
 ## Contact form status
-The current contact form validates required fields in the browser and opens the visitor's configured email client addressed to partnerships@maathavam.com. It does not submit to a server, provide server-side validation, or guarantee delivery. Before launch, the company must confirm that this is the approved destination and choose/configure a company-controlled form delivery service if server-side submission is required. Never expose service secrets in client-side code.
+- The contact form posts to FormSubmit's AJAX endpoint for delivery to founders@maathavaminnovationlabs.com and provides an on-page success/failure status.
+- FormSubmit requires the recipient to verify/activate the address on its first use. The site owner must complete that activation from the founders inbox and run a real end-to-end test before launch.
+- FormSubmit is a third-party processor; the privacy notice identifies this. Do not claim that delivery is live until recipient activation and a test email are confirmed.
+- The client-side code contains no email service secret. The form includes browser validation and a honeypot field; provider-side anti-spam protections remain enabled.
 
 ## Launch checks
 - Confirm legal entity name and approved company contact details.
