@@ -209,103 +209,75 @@
 
 
     /* --------------------------------------------------------
-       CONTACT FORM
-       --------------------------------------------------------
-
-       The form intentionally uses a mailto fallback so the
-       website works immediately without exposing or requiring
-       a third-party form endpoint.
-
-       A production form provider can be connected later.
+       CONTACT FORM — submit to the configured company inbox
        -------------------------------------------------------- */
 
     if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-        contactForm.addEventListener(
-            "submit",
-            function (event) {
+            if (!contactForm.reportValidity()) return;
 
-                event.preventDefault();
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton ? submitButton.textContent : "";
 
-                const formData =
-                    new FormData(contactForm);
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.setAttribute("aria-busy", "true");
+                submitButton.textContent = "Sending enquiry…";
+            }
+            if (formStatus) formStatus.textContent = "Sending your enquiry to Maathavam Innovation Labs…";
 
-                const name =
-                    String(
-                        formData.get("name") || ""
-                    ).trim();
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: "POST",
+                    body: new FormData(contactForm),
+                    headers: { "Accept": "application/json" }
+                });
+                let result = {};
+                try { result = await response.json(); } catch (_) {}
 
-                const organisation =
-                    String(
-                        formData.get("organisation") || ""
-                    ).trim();
-
-                const email =
-                    String(
-                        formData.get("email") || ""
-                    ).trim();
-
-                const opportunity =
-                    String(
-                        formData.get("opportunity") || ""
-                    ).trim();
-
-                const message =
-                    String(
-                        formData.get("message") || ""
-                    ).trim();
-
-
-                if (!name || !email || !opportunity || !message) {
-
-                    if (formStatus) {
-                        formStatus.textContent =
-                            "Please complete the required fields.";
-                    }
-
-                    return;
+                // FormSubmit can return HTTP 200 even when it rejects a submission.
+                // Treat only an explicit true success value as accepted.
+                const accepted = result.success === true || result.success === "true";
+                if (!response.ok || !accepted) {
+                    const serviceMessage = typeof result.message === "string" ? result.message.trim() : "";
+                    throw new Error(serviceMessage || "The form service did not confirm receipt.");
                 }
-
-
-                const subject =
-                    "Innovation Opportunity — Maathavam Innovation Labs";
-
-
-                const body =
-                    [
-                        "Name: " + name,
-                        "Organisation: " + organisation,
-                        "Email: " + email,
-                        "Opportunity Type: " + opportunity,
-                        "",
-                        "Opportunity Description:",
-                        message,
-                        "",
-                        "Please note: detailed confidential technical information should not be included in this initial enquiry."
-                    ].join("\n");
-
-
-                const mailto =
-                    "mailto:partnerships@maathavam.com" +
-                    "?subject=" +
-                    encodeURIComponent(subject) +
-                    "&body=" +
-                    encodeURIComponent(body);
-
 
                 if (formStatus) {
-                    formStatus.textContent =
-                        "Opening your email client...";
+                    formStatus.textContent = "Thank you. The form service accepted your enquiry. If you do not receive a response, please contact founders@maathavaminnovationlabs.com.";
                 }
-
-
-                window.location.href = mailto;
-
+                contactForm.reset();
+            } catch (error) {
+                if (formStatus) {
+                    const detail = error && error.message ? error.message : "";
+                    if (detail && detail !== "Failed to fetch" && detail !== "The form service did not confirm receipt.") {
+                        formStatus.textContent = "Your enquiry was not accepted: " + detail + " Please check the recipient activation email or contact founders@maathavaminnovationlabs.com.";
+                    } else {
+                        formStatus.textContent = "We couldn't confirm submission because the form service could not be reached. Please check your connection and try again, or contact founders@maathavaminnovationlabs.com.";
+                    }
+                }
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.removeAttribute("aria-busy");
+                    submitButton.textContent = originalButtonText || "Explore a partnership";
+                }
             }
-        );
-
+        });
     }
 
+
+    /* --------------------------------------------------------
+       ENGAGEMENT CARD -> CONTACT FORM
+       -------------------------------------------------------- */
+    document.querySelectorAll("[data-opportunity]").forEach(function (card) {
+        card.addEventListener("click", function () {
+            const select = document.getElementById("opportunitySelect");
+            if (select) select.value = card.getAttribute("data-opportunity") || "";
+        });
+    });
 
     /* --------------------------------------------------------
        SMOOTH ANCHOR HANDLING
