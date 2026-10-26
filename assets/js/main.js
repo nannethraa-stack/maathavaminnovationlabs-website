@@ -237,17 +237,26 @@
                 let result = {};
                 try { result = await response.json(); } catch (_) {}
 
-                if (!response.ok || result.success === false || result.success === "false") {
-                    throw new Error("Form submission was not accepted.");
+                // FormSubmit can return HTTP 200 even when it rejects a submission.
+                // Treat only an explicit true success value as accepted.
+                const accepted = result.success === true || result.success === "true";
+                if (!response.ok || !accepted) {
+                    const serviceMessage = typeof result.message === "string" ? result.message.trim() : "";
+                    throw new Error(serviceMessage || "The form service did not confirm receipt.");
                 }
 
                 if (formStatus) {
-                    formStatus.textContent = "Thank you. Your enquiry has been submitted. If you do not hear from us, please email founders@maathavaminnovationlabs.com.";
+                    formStatus.textContent = "Thank you. The form service accepted your enquiry. If you do not receive a response, please contact founders@maathavaminnovationlabs.com.";
                 }
                 contactForm.reset();
             } catch (error) {
                 if (formStatus) {
-                    formStatus.textContent = "We could not submit your enquiry just now. Please email founders@maathavaminnovationlabs.com directly.";
+                    const detail = error && error.message ? error.message : "";
+                    if (detail && detail !== "Failed to fetch" && detail !== "The form service did not confirm receipt.") {
+                        formStatus.textContent = "Your enquiry was not accepted: " + detail + " Please check the recipient activation email or contact founders@maathavaminnovationlabs.com.";
+                    } else {
+                        formStatus.textContent = "We couldn't confirm submission because the form service could not be reached. Please check your connection and try again, or contact founders@maathavaminnovationlabs.com.";
+                    }
                 }
             } finally {
                 if (submitButton) {
