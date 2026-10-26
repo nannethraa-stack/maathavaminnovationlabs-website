@@ -376,3 +376,20 @@ body{font-size:16px;line-height:1.75}
 .other-domains-grid .territory-card h3{font-size:clamp(22px,2vw,28px);line-height:1.16;letter-spacing:-.035em;margin-top:24px}
 .other-domains-grid .territory-card p{font-size:13px;line-height:1.8;color:#69746b}
 @media(max-width:760px){.domain-group-label{grid-template-columns:28px 1fr;gap:10px;margin-top:32px}.domain-group-label p{grid-column:2}.other-domains-label{margin-top:48px}.territory-grid.other-domains-grid{grid-template-columns:1fr}.other-domains-grid .territory-card{min-height:0}.other-domains-grid .territory-card h3{margin-top:18px}}
+
+
+/* Core portfolio architecture: three broad engineering disciplines */
+.core-domain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.core-domain-card{display:flex;flex-direction:column;min-height:390px;padding:clamp(24px,2.5vw,36px);background:#f8f7f1;border:1px solid #d4d7cc;border-radius:3px}
+.core-domain-card .territory-card-head{display:flex;align-items:center;gap:12px;min-height:34px}
+.core-domain-card .card-kicker{font:500 10px/1.5 var(--mono,"DM Mono",monospace);letter-spacing:.09em;color:#78856f}
+.core-domain-card h3{font-size:clamp(25px,2.5vw,34px);line-height:1.12;letter-spacing:-.045em;margin:34px 0 16px;color:#293b32}
+.core-domain-card>p{font-size:14px;line-height:1.85;color:#69746b}
+.domain-capabilities{display:flex;flex-direction:column;gap:0;margin-top:auto;padding-top:22px}
+.domain-capabilities span{padding:10px 0;border-top:1px solid #dce0d5;font-size:12px;line-height:1.5;color:#526353}
+.domain-qualification{margin-top:18px!important;padding-top:16px;border-top:1px solid #dce0d5;font-size:12px!important;color:#778071!important}
+.core-domain-card:hover{background:#fffef9;transform:translateY(-3px)}
+.healthcare-core-card{background:#eff0e7;border-color:#cbd3c2}
+.healthcare-core-card:hover{background:#f6f7ef}
+@media(max-width:900px){.core-domain-grid{grid-template-columns:1fr 1fr}.core-domain-card{min-height:350px}.healthcare-core-card{grid-column:1/-1}}
+@media(max-width:600px){.core-domain-grid{grid-template-columns:1fr;gap:12px}.core-domain-card,.healthcare-core-card{grid-column:auto;min-height:0;padding:25px}.core-domain-card h3{margin-top:25px;font-size:28px}.domain-capabilities{margin-top:12px}}
