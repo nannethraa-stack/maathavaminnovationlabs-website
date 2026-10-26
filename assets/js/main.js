@@ -209,101 +209,54 @@
 
 
     /* --------------------------------------------------------
-       CONTACT FORM
-       --------------------------------------------------------
-
-       The form intentionally uses a mailto fallback so the
-       website works immediately without exposing or requiring
-       a third-party form endpoint.
-
-       A production form provider can be connected later.
+       CONTACT FORM — submit to the configured company inbox
        -------------------------------------------------------- */
 
     if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-        contactForm.addEventListener(
-            "submit",
-            function (event) {
+            if (!contactForm.reportValidity()) return;
 
-                event.preventDefault();
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton ? submitButton.textContent : "";
 
-                const formData =
-                    new FormData(contactForm);
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.setAttribute("aria-busy", "true");
+                submitButton.textContent = "Sending enquiry…";
+            }
+            if (formStatus) formStatus.textContent = "Sending your enquiry to Maathavam Innovation Labs…";
 
-                const name =
-                    String(
-                        formData.get("name") || ""
-                    ).trim();
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: "POST",
+                    body: new FormData(contactForm),
+                    headers: { "Accept": "application/json" }
+                });
+                let result = {};
+                try { result = await response.json(); } catch (_) {}
 
-                const organisation =
-                    String(
-                        formData.get("organisation") || ""
-                    ).trim();
-
-                const email =
-                    String(
-                        formData.get("email") || ""
-                    ).trim();
-
-                const opportunity =
-                    String(
-                        formData.get("opportunity") || ""
-                    ).trim();
-
-                const message =
-                    String(
-                        formData.get("message") || ""
-                    ).trim();
-
-
-                if (!name || !email || !opportunity || !message) {
-
-                    if (formStatus) {
-                        formStatus.textContent =
-                            "Please complete the required fields.";
-                    }
-
-                    return;
+                if (!response.ok || result.success === false || result.success === "false") {
+                    throw new Error("Form submission was not accepted.");
                 }
-
-
-                const subject =
-                    "Innovation Opportunity — Maathavam Innovation Labs";
-
-
-                const body =
-                    [
-                        "Name: " + name,
-                        "Organisation: " + organisation,
-                        "Email: " + email,
-                        "Opportunity Type: " + opportunity,
-                        "",
-                        "Opportunity Description:",
-                        message,
-                        "",
-                        "Please note: detailed confidential technical information should not be included in this initial enquiry."
-                    ].join("\n");
-
-
-                const mailto =
-                    "mailto:partnerships@maathavam.com" +
-                    "?subject=" +
-                    encodeURIComponent(subject) +
-                    "&body=" +
-                    encodeURIComponent(body);
-
 
                 if (formStatus) {
-                    formStatus.textContent =
-                        "Opening your email client...";
+                    formStatus.textContent = "Thank you. Your enquiry has been submitted. If you do not hear from us, please email founders@maathavaminnovationlabs.com.";
                 }
-
-
-                window.location.href = mailto;
-
+                contactForm.reset();
+            } catch (error) {
+                if (formStatus) {
+                    formStatus.textContent = "We could not submit your enquiry just now. Please email founders@maathavaminnovationlabs.com directly.";
+                }
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.removeAttribute("aria-busy");
+                    submitButton.textContent = originalButtonText || "Explore a partnership";
+                }
             }
-        );
-
+        });
     }
 
 
