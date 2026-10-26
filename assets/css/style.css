@@ -393,3 +393,71 @@ body{font-size:16px;line-height:1.75}
 .healthcare-core-card:hover{background:#f6f7ef}
 @media(max-width:900px){.core-domain-grid{grid-template-columns:1fr 1fr}.core-domain-card{min-height:350px}.healthcare-core-card{grid-column:1/-1}}
 @media(max-width:600px){.core-domain-grid{grid-template-columns:1fr;gap:12px}.core-domain-card,.healthcare-core-card{grid-column:auto;min-height:0;padding:25px}.core-domain-card h3{margin-top:25px;font-size:28px}.domain-capabilities{margin-top:12px}}
+
+
+/* Legibility, responsive navigation and robust form states */
+.site-header{z-index:1000}
+.nav-shell{min-height:152px;gap:clamp(18px,2.5vw,34px)}
+.brand img{width:146px;height:146px;max-height:none;object-fit:contain;object-position:center;image-rendering:auto}
+.footer-brand img{width:146px;height:146px;max-height:none;object-fit:contain;object-position:center;filter:none;opacity:1}
+.hero-signature{font-size:14px;letter-spacing:.08em;color:#56665a}
+.hero-signature .signature-rule{flex:0 0 32px}
+.core-domain-card{min-width:0;overflow-wrap:anywhere}
+.core-domain-card h3{overflow-wrap:normal}
+.contact-form label{display:block;min-width:0}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;min-width:0;max-width:100%;border-radius:2px}
+.contact-form textarea{resize:vertical}
+.contact-form button[disabled]{cursor:wait;opacity:.7;transform:none}
+.form-status{min-height:1.6em;overflow-wrap:anywhere}
+.form-delivery-note{overflow-wrap:anywhere}
+.form-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
+img{height:auto}
+@media(max-width:1000px){
+ .nav-shell{min-height:136px;width:calc(100% - 48px)}
+ .brand img,.footer-brand img{width:128px;height:128px}
+ .nav-links{gap:12px}
+ .nav-links>a{font-size:10px}
+ .hero-signature{font-size:13px}
+}
+@media(max-width:900px){
+ .nav-shell{min-height:122px}
+ .brand img{width:116px;height:116px}
+ .nav-toggle{display:block;flex:0 0 auto;padding:12px;min-width:44px;min-height:44px;cursor:pointer}
+ .nav-links{position:absolute;top:100%;left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px max(24px,calc((100% - 720px)/2)) 20px;background:#f8f7f1;border-bottom:1px solid #d8d9cf;box-shadow:0 14px 22px rgba(17,30,40,.08);max-height:calc(100vh - 122px);overflow-y:auto}
+ .nav-links.open{display:flex;flex-direction:column}
+ .nav-links>a{font-size:13px;padding:13px 0;line-height:1.5}
+ .nav-links .nav-cta{margin-top:7px;padding:13px 15px;justify-content:space-between}
+ .core-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .healthcare-core-card{grid-column:auto}
+}
+@media(max-width:600px){
+ .nav-shell{width:calc(100% - 32px);min-height:106px}
+ .brand img{width:98px;height:98px}
+ .footer-brand img{width:112px;height:112px}
+ .nav-links{padding:8px 20px 18px;max-height:calc(100vh - 106px)}
+ .hero-signature{font-size:11px;gap:9px;letter-spacing:.04em}
+ .hero-signature .signature-rule{flex-basis:22px}
+ .core-domain-grid{grid-template-columns:minmax(0,1fr)}
+ .core-domain-card,.healthcare-core-card{min-width:0}
+ .contact-layout{grid-template-columns:minmax(0,1fr);gap:30px}
+ .contact-form{width:100%;min-width:0;padding:clamp(18px,5vw,25px)}
+ .form-row{grid-template-columns:minmax(0,1fr);gap:0}
+ .form-bottom{align-items:stretch;flex-direction:column}
+ .form-bottom>p{max-width:none}
+ .form-bottom .button{width:100%;min-height:48px}
+ .footer-bottom{align-items:flex-start;flex-direction:column;gap:12px}
+ .footer-bottom>div{flex-wrap:wrap}
+}
+@media(max-width:360px){
+ .nav-shell{width:calc(100% - 24px)}
+ .brand img{width:88px;height:88px}
+ .hero-inner,.section-shell{width:calc(100% - 28px)}
+ .hero h1{font-size:clamp(38px,11vw,44px)}
+ .hero-actions{align-items:stretch;flex-direction:column}
+ .hero-actions .button{width:100%}
+ .hero-signature{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
