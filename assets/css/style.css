@@ -307,3 +307,19 @@ body{font-size:16px;line-height:1.75}
  .brand img{width:66px;height:66px}
  .footer-brand img{width:72px;height:72px}
 }
+
+
+/* Problem-first storytelling and partner-oriented clarity */
+.problem-lenses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:54px 0 34px;border-top:1px solid rgba(32,51,77,.18);border-bottom:1px solid rgba(32,51,77,.18)}
+.problem-lenses article{padding:25px 24px 27px 0;margin-right:24px;border-right:1px solid rgba(32,51,77,.14)}
+.problem-lenses article:last-child{border-right:0;margin-right:0}
+.problem-lenses article>span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#7b876c}
+.problem-lenses h3{margin:22px 0 10px;font-size:clamp(18px,1.6vw,22px);line-height:1.25;letter-spacing:-.035em;color:var(--ink)}
+.problem-lenses p{margin:0;color:#5c686b;font-size:14px;line-height:1.75}
+.first-conversation{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px;align-items:start;padding:30px 0;margin:36px 0 12px;border-top:1px solid rgba(32,51,77,.2);border-bottom:1px solid rgba(32,51,77,.2)}
+.conversation-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:#748364}
+.first-conversation h3{margin:12px 0 0;font-size:clamp(25px,3vw,36px);line-height:1.12;letter-spacing:-.045em;color:var(--ink)}
+.first-conversation>p{margin:0;max-width:690px;color:#566367;font-size:15px;line-height:1.85}
+.territory-note{max-width:940px}
+@media(max-width:900px){.problem-lenses{grid-template-columns:repeat(2,minmax(0,1fr))}.problem-lenses article:nth-child(2){border-right:0;margin-right:0}.problem-lenses article:nth-child(3),.problem-lenses article:nth-child(4){border-top:1px solid rgba(32,51,77,.14)}}
+@media(max-width:600px){.problem-lenses{grid-template-columns:1fr;margin:34px 0 24px}.problem-lenses article,.problem-lenses article:nth-child(2),.problem-lenses article:nth-child(3),.problem-lenses article:nth-child(4){border-right:0;border-top:1px solid rgba(32,51,77,.14);margin:0;padding:22px 0}.problem-lenses article:first-child{border-top:0}.problem-lenses h3{margin-top:12px}.first-conversation{grid-template-columns:1fr;gap:14px;padding:24px 0}.conversation-kicker{font-size:9px}}
