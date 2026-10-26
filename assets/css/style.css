@@ -219,3 +219,69 @@ body{font-size:16px;line-height:1.75}
 @media(prefers-reduced-motion:reduce){
  .hero-manifesto:before,.hero-manifesto:after{display:none}
 }
+
+
+/* Final polish: confident, legible brand-first layout */
+.brand img{width:230px;max-height:52px;height:auto;object-fit:contain;image-rendering:auto}
+.footer-brand img{width:230px;max-height:52px;height:auto;object-fit:contain;filter:none;opacity:1}
+.hero{background:linear-gradient(125deg,#f8f7f1 0%,#f3f2ea 72%,#edf0e5 100%);color:var(--ink)}
+.hero:before,.hero:after,.hero-grain{display:none!important}
+.hero-inner{display:block;width:min(1280px,calc(100% - 88px));min-height:clamp(620px,76vh,790px);padding-top:clamp(90px,11vw,150px);padding-bottom:clamp(80px,9vw,125px)}
+.hero-copy{max-width:1030px}
+.hero h1{max-width:1000px;font-size:clamp(62px,7.7vw,106px);line-height:.99;letter-spacing:-.078em}
+.hero-lead{font-size:clamp(22px,2.5vw,30px);margin-top:32px}
+.hero-description{max-width:760px;font-size:17px;line-height:1.85}
+.hero-actions{margin-top:36px}
+.hero-signature{margin-top:52px;font-size:13px}
+.thesis-grid{grid-template-columns:minmax(0,1fr)}
+.thesis-main{max-width:1080px}
+.thesis-bottom{gap:clamp(36px,7vw,100px)}
+.section-topline{margin-bottom:0}
+.section-topline>p{font-size:15px;color:#68736d}
+.territory-card{min-height:290px}
+.territory-card-head{min-height:34px}
+.territory-card p{font-size:15px;line-height:1.8}
+.territory-card h3{margin-top:26px}
+.territory-foot{display:none}
+.method-step{grid-template-columns:48px 24px minmax(0,1fr);gap:24px}
+.step-copy{grid-template-columns:.5fr 1fr .65fr;gap:28px}
+.step-copy p{font-size:15px;line-height:1.8}
+.step-output{font-size:13px;color:#5e6d60;padding-top:4px}
+.engage-heading{grid-template-columns:minmax(0,1.1fr) minmax(280px,.8fr);gap:24px 64px}
+.engage-heading h2{grid-column:1;grid-row:auto}
+.engage-heading>p{grid-column:2;grid-row:auto;font-size:15px}
+.engage-type{font-size:13px;color:#687a5a}
+.engage-card p{font-size:15px;line-height:1.8}
+.contact-copy .section-index{display:none}
+.confidentiality-note p{font-size:14px}
+.form-delivery-note{font-size:12px}
+.footer-bottom{font-size:12px}
+@media(max-width:1000px){
+ .hero-inner{width:calc(100% - 56px);min-height:0;padding-top:95px;padding-bottom:90px}
+ .hero h1{font-size:clamp(56px,8vw,82px)}
+ .brand img,.footer-brand img{width:205px}
+ .engage-heading{grid-template-columns:1fr;gap:22px}
+ .engage-heading h2,.engage-heading>p{grid-column:1;grid-row:auto}
+ .engage-heading>p{max-width:620px}
+}
+@media(max-width:760px){
+ .hero-inner{width:calc(100% - 48px);padding-top:74px;padding-bottom:65px}
+ .hero h1{font-size:clamp(48px,9.5vw,70px)}
+ .hero-lead{font-size:22px}
+ .hero-description{font-size:16px}
+ .hero-signature{margin-top:38px;font-size:12px}
+ .brand img,.footer-brand img{width:180px}
+ .thesis-grid{grid-template-columns:1fr}
+ .step-copy{grid-template-columns:1fr;gap:8px}
+ .step-output{grid-column:1;margin-top:3px}
+ .territory-card{min-height:255px}
+}
+@media(max-width:480px){
+ .hero-inner{width:calc(100% - 36px);padding-top:62px;padding-bottom:58px}
+ .hero h1{font-size:clamp(43px,11vw,55px)}
+ .hero-lead{font-size:20px}
+ .hero-description{font-size:15px}
+ .brand img,.footer-brand img{width:158px}
+ .territory-card p,.engage-card p{font-size:14px}
+ .step-copy h3{font-size:22px}
+}
