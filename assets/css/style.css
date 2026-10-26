@@ -360,3 +360,19 @@ body{font-size:16px;line-height:1.75}
 @media(max-width:1050px){.hero-inner{grid-template-columns:minmax(0,1fr) minmax(270px,.7fr);gap:30px;width:calc(100% - 56px)}.hero h1{font-size:clamp(54px,6vw,76px)}.healthcare-grid .territory-card{min-height:370px}}
 @media(max-width:760px){.hero-inner{grid-template-columns:1fr;width:calc(100% - 48px);gap:36px;padding-top:66px;padding-bottom:64px}.hero-copy{max-width:100%}.hero h1{font-size:clamp(48px,10vw,70px)}.healthcare-focus{width:100%;max-width:520px}.focus-orbit{max-width:250px}.territory-grid.healthcare-grid{grid-template-columns:1fr}.healthcare-grid .territory-card{min-height:0}.healthcare-grid .territory-card h3{margin-top:24px}.healthcare-card-foot{margin-top:20px}}
 @media(max-width:480px){.hero-inner{width:calc(100% - 36px)}.healthcare-focus{padding:22px}.focus-list strong{font-size:13px}.healthcare-grid .territory-card{padding:24px}}
+
+
+/* Domain hierarchy: healthcare is a core focus, alongside the wider portfolio */
+.domain-group-label{display:grid;grid-template-columns:38px minmax(180px,.55fr) minmax(220px,1fr);align-items:baseline;gap:16px;margin:42px 0 20px;padding-bottom:15px;border-bottom:1px solid #d2d6cb}
+.domain-group-label>span{font:11px var(--mono,monospace);color:#8a967e;letter-spacing:.08em}
+.domain-group-label h3{font-size:clamp(20px,2vw,27px);line-height:1.25;letter-spacing:-.03em;font-weight:500;margin:0;color:#293b32}
+.domain-group-label p{font-size:13px;line-height:1.7;color:#737d72;margin:0;max-width:450px}
+.other-domains-label{margin-top:70px}
+.territory-grid.other-domains-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border:0}
+.other-domains-grid .territory-card{min-height:260px;padding:clamp(22px,2vw,30px);display:flex;flex-direction:column;background:#f3f2eb;border:1px solid #d8d9d0;border-radius:3px}
+.other-domains-grid .territory-card:hover{background:#fbfaf5;transform:translateY(-2px)}
+.other-domains-grid .territory-card-head{display:flex;align-items:center;gap:10px;min-height:30px}
+.other-domains-grid .card-kicker{font:500 9px/1.5 var(--mono,monospace);letter-spacing:.08em;color:#78856f}
+.other-domains-grid .territory-card h3{font-size:clamp(22px,2vw,28px);line-height:1.16;letter-spacing:-.035em;margin-top:24px}
+.other-domains-grid .territory-card p{font-size:13px;line-height:1.8;color:#69746b}
+@media(max-width:760px){.domain-group-label{grid-template-columns:28px 1fr;gap:10px;margin-top:32px}.domain-group-label p{grid-column:2}.other-domains-label{margin-top:48px}.territory-grid.other-domains-grid{grid-template-columns:1fr}.other-domains-grid .territory-card{min-height:0}.other-domains-grid .territory-card h3{margin-top:18px}}
