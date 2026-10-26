@@ -323,3 +323,40 @@ body{font-size:16px;line-height:1.75}
 .territory-note{max-width:940px}
 @media(max-width:900px){.problem-lenses{grid-template-columns:repeat(2,minmax(0,1fr))}.problem-lenses article:nth-child(2){border-right:0;margin-right:0}.problem-lenses article:nth-child(3),.problem-lenses article:nth-child(4){border-top:1px solid rgba(32,51,77,.14)}}
 @media(max-width:600px){.problem-lenses{grid-template-columns:1fr;margin:34px 0 24px}.problem-lenses article,.problem-lenses article:nth-child(2),.problem-lenses article:nth-child(3),.problem-lenses article:nth-child(4){border-right:0;border-top:1px solid rgba(32,51,77,.14);margin:0;padding:22px 0}.problem-lenses article:first-child{border-top:0}.problem-lenses h3{margin-top:12px}.first-conversation{grid-template-columns:1fr;gap:14px;padding:24px 0}.conversation-kicker{font-size:9px}}
+
+
+/* Healthcare-led positioning: editorial hero and focused domain cards */
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.72fr);align-items:center;gap:clamp(34px,5vw,84px);width:min(1360px,calc(100% - 88px));min-height:clamp(650px,78vh,840px);padding-top:clamp(72px,8vw,116px);padding-bottom:clamp(70px,8vw,110px)}
+.hero-copy{max-width:800px;min-width:0}
+.hero h1{font-size:clamp(58px,6.3vw,92px);max-width:790px}
+.hero-description{max-width:690px}
+.healthcare-focus{align-self:center;position:relative;overflow:hidden;background:#e8e9df;border:1px solid #d2d8ca;border-radius:4px;padding:clamp(22px,2.5vw,36px);color:#24352f;box-shadow:0 24px 70px rgba(29,47,39,.08)}
+.focus-top{display:flex;align-items:center;gap:10px;font:500 11px var(--mono, "DM Mono", monospace);letter-spacing:.13em;color:#667664}
+.focus-pulse{width:8px;height:8px;border-radius:50%;background:#879c6c;box-shadow:0 0 0 5px rgba(135,156,108,.13)}
+.focus-index{margin-left:auto;color:#8c9687}
+.focus-orbit{position:relative;width:min(100%,300px);aspect-ratio:1;margin:10px auto 4px;display:grid;place-items:center}
+.orbit-ring{position:absolute;border:1px solid rgba(101,125,99,.32);border-radius:50%;inset:12%}
+.orbit-ring-one{transform:rotate(28deg) scaleX(.68)}
+.orbit-ring-two{transform:rotate(-36deg) scaleX(.68)}
+.orbit-core{width:34%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#253b34;color:#f5f3e9;box-shadow:0 0 0 12px rgba(126,148,112,.12),0 0 0 28px rgba(126,148,112,.06);font:500 20px Georgia,serif;letter-spacing:.08em}
+.orbit-node{position:absolute;width:11px;height:11px;border-radius:50%;background:#b7a06d;border:3px solid #e8e9df;box-shadow:0 0 0 1px rgba(120,134,102,.45)}
+.orbit-node-one{top:20%;left:25%}.orbit-node-two{right:16%;top:44%}.orbit-node-three{bottom:16%;left:43%}
+.focus-caption{font:500 10px/1.7 var(--mono, "DM Mono", monospace);letter-spacing:.1em;color:#74816e;border-top:1px solid #cbd3c4;padding-top:17px;margin:0 0 12px}
+.focus-list>div{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline;padding:13px 0;border-bottom:1px solid #d0d6c9}
+.focus-list>div>span{font:11px var(--mono, "DM Mono", monospace);color:#8c967f}
+.focus-list strong{font-size:14px;line-height:1.45;font-weight:600}
+.focus-foot{font:13px/1.7 var(--sans,Arial,sans-serif);color:#657367;margin:16px 0 0}
+.territories{background:#eeede5}
+.territories-heading{max-width:1000px}
+.territory-grid.healthcare-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border:0}
+.healthcare-grid .territory-card{display:flex;flex-direction:column;min-height:350px;padding:clamp(22px,2.3vw,34px);background:#f8f7f1;border:1px solid #d4d7cc;border-radius:3px}
+.healthcare-grid .territory-card:hover{background:#fffef9;transform:translateY(-3px)}
+.healthcare-grid .territory-card-head{display:flex;align-items:center;gap:12px;min-height:35px}
+.healthcare-grid .card-kicker{font:500 10px var(--mono, "DM Mono", monospace);letter-spacing:.1em;color:#78856f}
+.healthcare-grid .territory-card h3{font-size:clamp(23px,2.1vw,30px);line-height:1.16;margin-top:34px;letter-spacing:-.035em}
+.healthcare-grid .territory-card p{font-size:14px;line-height:1.8;color:#69746b}
+.healthcare-card-foot{margin-top:auto;padding-top:24px;font:10px/1.6 var(--mono, "DM Mono", monospace);letter-spacing:.08em;color:#7d896e}
+.territory-note{max-width:1000px;margin-top:28px}
+@media(max-width:1050px){.hero-inner{grid-template-columns:minmax(0,1fr) minmax(270px,.7fr);gap:30px;width:calc(100% - 56px)}.hero h1{font-size:clamp(54px,6vw,76px)}.healthcare-grid .territory-card{min-height:370px}}
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr;width:calc(100% - 48px);gap:36px;padding-top:66px;padding-bottom:64px}.hero-copy{max-width:100%}.hero h1{font-size:clamp(48px,10vw,70px)}.healthcare-focus{width:100%;max-width:520px}.focus-orbit{max-width:250px}.territory-grid.healthcare-grid{grid-template-columns:1fr}.healthcare-grid .territory-card{min-height:0}.healthcare-grid .territory-card h3{margin-top:24px}.healthcare-card-foot{margin-top:20px}}
+@media(max-width:480px){.hero-inner{width:calc(100% - 36px)}.healthcare-focus{padding:22px}.focus-list strong{font-size:13px}.healthcare-grid .territory-card{padding:24px}}
