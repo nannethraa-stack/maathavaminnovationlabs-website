@@ -246,16 +246,16 @@
                 }
 
                 if (formStatus) {
-                    formStatus.textContent = "Thank you. The form service accepted your enquiry. If you do not receive a response, please contact founders@maathavaminnovationlabs.com.";
+                    formStatus.textContent = "Thank you. The form service accepted your enquiry. If you do not receive a response, please contact foundersdesk@maathavaminnovationlabs.com.";
                 }
                 contactForm.reset();
             } catch (error) {
                 if (formStatus) {
                     const detail = error && error.message ? error.message : "";
                     if (detail && detail !== "Failed to fetch" && detail !== "The form service did not confirm receipt.") {
-                        formStatus.textContent = "Your enquiry was not accepted: " + detail + " Please check the recipient activation email or contact founders@maathavaminnovationlabs.com.";
+                        formStatus.textContent = "Your enquiry was not accepted: " + detail + " Please check the recipient activation email or contact foundersdesk@maathavaminnovationlabs.com.";
                     } else {
-                        formStatus.textContent = "We couldn't confirm submission because the form service could not be reached. Please check your connection and try again, or contact founders@maathavaminnovationlabs.com.";
+                        formStatus.textContent = "We couldn't confirm submission because the form service could not be reached. Please check your connection and try again, or contact foundersdesk@maathavaminnovationlabs.com.";
                     }
                 }
             } finally {
